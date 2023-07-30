@@ -38,14 +38,27 @@ function DestinationList() {
   const renderedKeys = data.map((dest) => {
     return (
       <li key={dest.name} onClick={() => handleClick(dest.name)}>
-        <p>{dest.name}</p>
+        <p>{dest.name.toUpperCase()}</p>
       </li>
     );
   });
-  const selectedDestData = data.filter((dest) => dest.name === curDest);
+  const selectedDestData = data.filter((dest) => dest.name === curDest)[0];
   return (
     <div>
       <ul>{renderedKeys}</ul>
+      <img src={selectedDestData.image} alt={selectedDestData.name} />
+      <div>
+        <h1>{selectedDestData.name.toUpperCase()}</h1>
+        <p>{selectedDestData.desc}</p>
+        <div>
+          <h2>AVG. DISTANCE</h2>
+          <p>{selectedDestData.avgDist}</p>
+        </div>
+        <div>
+          <h2>EST. TRAVEL TIME</h2>
+          <p>{selectedDestData.estTravelTime}</p>
+        </div>
+      </div>
     </div>
   );
 }
