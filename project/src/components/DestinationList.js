@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useState } from "react";
 
 function DestinationList() {
@@ -36,27 +37,47 @@ function DestinationList() {
     setCurDest(name);
   };
   const renderedKeys = data.map((dest) => {
+    const active = dest.name === curDest;
     return (
-      <li key={dest.name} onClick={() => handleClick(dest.name)}>
-        <p>{dest.name.toUpperCase()}</p>
+      <li
+        key={dest.name}
+        onClick={() => handleClick(dest.name)}
+        className={classNames(
+          "uppercase tracking-wide text-sm cursor-pointer mr-6 h-full",
+          {
+            "border-b-2": active,
+            "hover:border-b-2 border-b-neutral-400": !active
+          }
+        )}
+      >
+        <p>{dest.name}</p>
       </li>
     );
   });
   const selectedDestData = data.filter((dest) => dest.name === curDest)[0];
   return (
-    <div>
-      <ul>{renderedKeys}</ul>
-      <img src={selectedDestData.image} alt={selectedDestData.name} />
-      <div>
-        <h1>{selectedDestData.name.toUpperCase()}</h1>
-        <p>{selectedDestData.desc}</p>
-        <div>
-          <h2>AVG. DISTANCE</h2>
-          <p>{selectedDestData.avgDist}</p>
-        </div>
-        <div>
-          <h2>EST. TRAVEL TIME</h2>
-          <p>{selectedDestData.estTravelTime}</p>
+    <div className="flex flex-row justify-around">
+      <img
+        className="h-1/3"
+        src={selectedDestData.image}
+        alt={selectedDestData.name}
+      />
+      <div className="w-1/3 flex flex-col">
+        <ul className="flex flex-row h-8">{renderedKeys}</ul>
+        <h1 className="uppercase text-7xl font-serif my-10 pl-1">
+          {selectedDestData.name}
+        </h1>
+        <p className="pb-10 leading-8">{selectedDestData.desc}</p>
+        <div className="w-full h-px bg-gray-700 mb-6" />
+        <div className="flex flex-row">
+          <div className="flex flex-col w-1/2">
+            <h2 className="text-xs tracking-wider">AVG. DISTANCE</h2>
+            <p className="text-2xl">{selectedDestData.avgDist}</p>
+          </div>
+          <div className="flex flex-col w-1/2">
+            <h2 className="text-xs tracking-wider">EST. TRAVEL TIME</h2>
+            <p className="text-2xl">{selectedDestData.estTravelTime}</p>
+          </div>
         </div>
       </div>
     </div>
