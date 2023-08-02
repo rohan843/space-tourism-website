@@ -1,6 +1,9 @@
 function HomePage() {
   return (
     <div>
+      <div
+        className="fixed min-h-screen inset-0 bg-home bg-cover -z-50"
+      />
       <p>So you want to travel to</p>
       <h1>SPACE</h1>
       <p>

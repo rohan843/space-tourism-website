@@ -1,6 +1,6 @@
 import Link from "./Link";
 
-function Sidebar() {
+function Sidebar({ setImage }) {
   const pages = [
     { name: "home", link: "/", imageName: "home" },
     { name: "destination", link: "/destination", imageName: "destination" },
