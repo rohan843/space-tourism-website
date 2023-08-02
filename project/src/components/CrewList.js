@@ -38,10 +38,17 @@ function CrewList() {
     return (
       <div
         key={idx}
-        className={classNames("rounded-full", "w-4", "h-4", "cursor-pointer", {
-          "bg-gray-400": idx === curCrewMemberIdx,
-          "bg-gray-200": idx !== curCrewMemberIdx,
-        })}
+        className={classNames(
+          "rounded-full",
+          "w-3",
+          "h-3",
+          "cursor-pointer",
+          {
+            "bg-gray-700": idx !== curCrewMemberIdx,
+            "bg-white": idx === curCrewMemberIdx,
+          },
+          "mr-5"
+        )}
         onClick={() => {
           handleClick(idx);
         }}
@@ -50,19 +57,22 @@ function CrewList() {
   });
 
   return (
-    <div>
-      <div>
-        <h2>{data[curCrewMemberIdx].designation.toUpperCase()}</h2>
-        <h1>{data[curCrewMemberIdx].name.toUpperCase()}</h1>
-        <p>{data[curCrewMemberIdx].desc}</p>
+    <div className="text-white">
+      <div className="mt-32 w-1/2 flex flex-col pl-40">
+        <h2 className="text-3xl font-serif text-neutral-500 tracking-wider mb-4">
+          {data[curCrewMemberIdx].designation.toUpperCase()}
+        </h2>
+        <h1 className="text-5xl font-serif tracking-wider mb-9">
+          {data[curCrewMemberIdx].name.toUpperCase()}
+        </h1>
+        <p className="w-3/4">{data[curCrewMemberIdx].desc}</p>
+        <div className="flex flex-row mt-32">{buttonsList}</div>
       </div>
-      <div>
-        <img
-          src={data[curCrewMemberIdx].image}
-          alt={data[curCrewMemberIdx].name}
-        />
-      </div>
-      <div>{buttonsList}</div>
+      <img
+        className="fixed custom-crew-translate bottom-0"
+        src={data[curCrewMemberIdx].image}
+        alt={data[curCrewMemberIdx].name}
+      />
     </div>
   );
 }
