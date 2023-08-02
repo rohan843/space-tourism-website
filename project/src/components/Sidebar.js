@@ -23,12 +23,11 @@ function Sidebar() {
   const renderedLinks = pages.map((page) => {
     const active = page.link === currentPath;
     return (
-      <Link to={page.link} className="text-white">
+      <Link key={page.link} to={page.link} className="text-white">
         <div
-          key={page.link}
           className={classNames("h-full flex flex-row items-center px-4", {
             "border-b-2": active,
-            "hover:border-b-2 border-b-neutral-500": !active,
+            "hover:border-b-2 border-b-neutral-400": !active,
           })}
         >
           <span className="font-bold pr-2">{page.index}</span>
@@ -38,12 +37,12 @@ function Sidebar() {
     );
   });
   return (
-    <div className="flex flex-row items-center w-screen pl-10 mt-5">
+    <div className="flex flex-row justify-between items-center w-screen pl-10 mt-5">
       <div>
         <img src="assets/shared/logo.svg" alt="logo" />
       </div>
-      <div className="h-px w-48 bg-slate-600"></div>
-      <div className="h-20 flex flex-row bg-white/5 backdrop-blur-md">
+      <div className="relative left-20 z-10 h-px w-2/5 bg-slate-600"></div>
+      <div className="h-20 w-3/5 pl-44 flex flex-row bg-white/5 backdrop-blur-xl">
         {renderedLinks}
       </div>
     </div>
