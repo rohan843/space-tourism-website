@@ -2,10 +2,10 @@ import Link from "./Link";
 
 function Sidebar() {
   const pages = [
-    { name: "home", link: "/" },
-    { name: "destination", link: "/destination" },
-    { name: "crew", link: "/crew" },
-    { name: "technology", link: "/technology" },
+    { name: "home", link: "/", imageName: "home" },
+    { name: "destination", link: "/destination", imageName: "destination" },
+    { name: "crew", link: "/crew", imageName: "crew" },
+    { name: "technology", link: "/technology", imageName: "technology" },
   ];
   const renderedLinks = pages.map((page) => {
     return (
